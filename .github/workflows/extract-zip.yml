@@ -1,4 +1,4 @@
-name: Extract ZIP
+name: Prepare ClipForge
 
 on:
   workflow_dispatch:
@@ -7,22 +7,20 @@ permissions:
   contents: write
 
 jobs:
-  extract:
+  prepare:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Extract project
+      - name: Move project to root
         run: |
-          unzip -o ClipForgeAI-v0.5.2-GitHub.zip -d extracted
-          cp -a extracted/. .
-          rm -rf extracted
-          rm -f ClipForgeAI-v0.5.2-GitHub.zip
+          cp -a ClipForgeAI-v0.5.2-GitHub/. .
+          rm -rf ClipForgeAI-v0.5.2-GitHub
 
-      - name: Commit files
+      - name: Save changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Extract ClipForge AI project" || true
+          git commit -m "Move project to repository root" || true
           git push
