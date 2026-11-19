@@ -16,7 +16,11 @@ jobs:
 
       - name: Move project
         run: |
-          cp -a ClipForgeAI-v0.5.2-GitHub/. .
+          cp -a ClipForgeAI-v0.5.2-GitHub/android .
+          cp -a ClipForgeAI-v0.5.2-GitHub/backend .
+          cp ClipForgeAI-v0.5.2-GitHub/README_UZ.md .
+          cp ClipForgeAI-v0.5.2-GitHub/START_HERE_PHONE_UZ.md .
+          cp ClipForgeAI-v0.5.2-GitHub/VERSION.txt .
           rm -rf ClipForgeAI-v0.5.2-GitHub
 
       - name: Commit and push
@@ -24,6 +28,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Prepare ClipForge root" || true
+          git commit -m "Prepare ClipForge project"
           git pull --rebase origin main
           git push origin HEAD:main
