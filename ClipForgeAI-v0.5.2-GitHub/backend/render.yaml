@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: clipforge-flow-free
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: DATABASE_PATH
+        value: /var/data/clipforge.db
+      - key: ARTIFACTS_DIR
+        value: /var/data/artifacts
+      - key: API_ACCESS_TOKEN
+        generateValue: true
+      - key: GEMINI_API_KEY
+        sync: false
+    disk:
+      name: clipforge-data
+      mountPath: /var/data
+      sizeGB: 10

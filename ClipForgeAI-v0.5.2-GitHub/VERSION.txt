@@ -1,0 +1,4 @@
+ClipForge AI v0.5.2
+Packaging: unified GitHub repository
+Android version/build status: source only; APK not built
+Backend deployment status: not deployed
